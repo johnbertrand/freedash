@@ -1,4 +1,5 @@
-var app = angular.module('myApp', []);
+
+
 app.controller('hostsAffectedController', function($scope) {
     
 	$scope.updateAffectedHostsDetails = function(){
