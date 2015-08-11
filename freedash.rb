@@ -3,10 +3,10 @@ require 'sinatra'
 require 'rufus/scheduler'
 require 'sinatra/json'
 require 'json'
-require './nagios_xi/getservicegroups.rb'
+require './nagios_xi/servicegroups.rb'
 
 
-@@groups = Array.new
+
 
 get '/' do
   erb :index, :layout => :dashboard_main
@@ -25,7 +25,10 @@ end
 
 get '/servicegroups.json' do
   content_type :json
-  NagiosServiceGroups.getServiceGroups().to_json
+  
+  groups = NagiosServiceGroups.instance.getServiceGroups()
+ 
+  groups.to_json
 end
 
 get '/addservicegroup' do
